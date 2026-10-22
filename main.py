@@ -1,16 +1,9 @@
-# This is a sample Python script.
+from nicegui import ui
+WIDTH=1000
+HEIGHT=1000
+horizontal_axis_pos = 800
+graph = ui.interactive_image(size=(WIDTH, HEIGHT))
+graph.classes("w-lg bg-stone-100")
+horizontal_axis= f"""<line x1=100 y1={horizontal_axis_pos}> x2={WIDTH} y2={horizontal_axis_pos}</line>"""
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+ui.run()
