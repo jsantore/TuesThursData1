@@ -12,6 +12,8 @@ shapes_list.append(vertical_axis)
 with open("MedianSalariesTech.txt", "r") as file:
     file_lines = file.readlines()
     file_lines = file_lines[1:]
+    xpos =100
+    bar_color = 'black'
     for line in file_lines:
         data = line.split('~')
         stringsalary2025 =data[3]
@@ -19,6 +21,22 @@ with open("MedianSalariesTech.txt", "r") as file:
         string_ma_salary2024= data[4]
         ma_salary_2024=int(string_ma_salary2024[1:])
         #turns out the data runs from -1050 to 31170 be careful of the first
+        salary_difference = ma_salary_2024 - us_salary_2025
+        if salary_difference > 25_000:
+            bar_color = 'green'
+        elif salary_difference > 15_000:
+            bar_color = 'yellow'
+        elif salary_difference > 7000:
+            bar_color = 'red'
+        elif salary_difference >0:
+            bar_color = 'blue'
+        else:
+            bar_color = "purple"
+        bar_height = salary_difference/50
+        bar = f'''<rect  x={xpos} y={horizontal_axis_pos-bar_height} 
+        height={bar_height} width=100 fill='{bar_color}' />'''
+        shapes_list.append(bar)
+        xpos = xpos+100
 shapes_as_big_string = "\n".join(shapes_list)
 graph.set_content(shapes_as_big_string)
 ui.run()
