@@ -18,6 +18,7 @@ with open("MedianSalariesTech.txt", "r") as file:
         us_salary_2025=int(stringsalary2025[1:])
         string_ma_salary2024= data[4]
         ma_salary_2024=int(string_ma_salary2024[1:])
+        #the difference ranges from -$1050 t0 $31170
 shapes_as_big_string = "\n".join(shapes_list)
 graph.set_content(shapes_as_big_string)
 ui.run()
