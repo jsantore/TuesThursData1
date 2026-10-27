@@ -18,7 +18,7 @@ with open("MedianSalariesTech.txt", "r") as file:
         us_salary_2025=int(stringsalary2025[1:])
         string_ma_salary2024= data[4]
         ma_salary_2024=int(string_ma_salary2024[1:])
-        #turns out the data runs from -1050 to 31170
+        #turns out the data runs from -1050 to 31170 be careful of the first
 shapes_as_big_string = "\n".join(shapes_list)
 graph.set_content(shapes_as_big_string)
 ui.run()
