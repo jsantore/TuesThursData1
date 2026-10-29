@@ -6,17 +6,22 @@ HEIGHT = 1000
 horizontal_axis_pos = 800
 # this is the list of shape strings that we will use for the first graph
 shapes_list = []
+second_shapes_list = []
 # if we build the title label first, it will show up on the webpage above the other elements
 title = ui.label("How Much More do MA tech Jobs Pay than US?")
 title.style("font-size: 20px")
 # we then add the interactive image for the first graph
 graph = ui.interactive_image(size=(WIDTH, HEIGHT))
 graph.classes("w-lg bg-stone-100")
+graph2 = ui.interactive_image(size=(WIDTH, HEIGHT))
+graph2.classes("w-lg bg-green-100")
 # the string that describes the two axes can be added to both graphs
 horizontal_axis = f"""<line x1=100 y1={horizontal_axis_pos} x2={WIDTH} y2={horizontal_axis_pos} stroke='black' stroke-width=4 />"""
 shapes_list.append(horizontal_axis)
 vertical_axis = f"""<line x1=100 y1=0 x2=100 y2={horizontal_axis_pos} stroke='black' stroke-width=4 />"""
 shapes_list.append(vertical_axis)
+second_shapes_list.append(horizontal_axis)
+second_shapes_list.append(vertical_axis)
 # now open the file and process the data to create the graph
 with open("MedianSalariesTech.txt", "r") as file:
     file_lines = file.readlines()
@@ -58,4 +63,6 @@ with open("MedianSalariesTech.txt", "r") as file:
 # turn the list of strings describing what to draw into a single string
 shapes_as_big_string = "\n".join(shapes_list)
 graph.set_content(shapes_as_big_string)
+second_shapes_string = "\n".join(second_shapes_list)
+graph2.set_content(second_shapes_string)
 ui.run()
