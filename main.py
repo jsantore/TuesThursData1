@@ -3,6 +3,8 @@ WIDTH=1200
 HEIGHT=1000
 horizontal_axis_pos = 800
 shapes_list = []
+title = ui.label("How Much More do MA tech Jobs Pay than US?")
+title.style("font-size: 20px")
 graph = ui.interactive_image(size=(WIDTH, HEIGHT))
 graph.classes("w-lg bg-stone-100")
 horizontal_axis= f"""<line x1=100 y1={horizontal_axis_pos} x2={WIDTH} y2={horizontal_axis_pos} stroke='black' stroke-width=4 />"""
@@ -33,9 +35,16 @@ with open("MedianSalariesTech.txt", "r") as file:
         else:
             bar_color = "purple"
         bar_height = salary_difference/50
+        if bar_height < 0:
+            bar_height=bar_height*-1
         bar = f'''<rect  x={xpos} y={horizontal_axis_pos-bar_height} 
         height={bar_height} width=100 fill='{bar_color}' />'''
+        bar_label = f'''<text x="{xpos+40}" y="{horizontal_axis_pos-bar_height}" 
+        fill='black' font-size=16 writing-mode="vertical-rl" > {data[0]} </text>
+'''
+
         shapes_list.append(bar)
+        shapes_list.append(bar_label)
         xpos = xpos+100
 shapes_as_big_string = "\n".join(shapes_list)
 graph.set_content(shapes_as_big_string)
