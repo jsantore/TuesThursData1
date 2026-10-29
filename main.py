@@ -22,6 +22,11 @@ vertical_axis = f"""<line x1=100 y1=0 x2=100 y2={horizontal_axis_pos} stroke='bl
 shapes_list.append(vertical_axis)
 second_shapes_list.append(horizontal_axis)
 second_shapes_list.append(vertical_axis)
+for amount in range(0, 36_000, 5000):
+    location = horizontal_axis_pos- amount/50
+    axis_label = f'''<text x=10  y={location} fill='black'font-size=18 >
+${amount} </text>'''
+    shapes_list.append(axis_label)
 # now open the file and process the data to create the graph
 with open("MedianSalariesTech.txt", "r") as file:
     file_lines = file.readlines()
