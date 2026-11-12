@@ -27,14 +27,23 @@ while True:
         largest_so_far = countries[0]
         for current_country in countries:
             current_pop = int(current_country["pop_change_num"])
-            largest_pop = int(current_country["pop_change_num"])
+            largest_pop = int(largest_so_far["pop_change_num"])
             if current_pop > largest_pop:
                 largest_so_far = current_country
         print(f"""The largest population change  is {largest_so_far['pop_change_num']} in {largest_so_far['name']} """)
     elif choice == "2":
-        pass
+        smallest_so_far = countries[0]
+        for current_country in countries:
+            current_pop = int(current_country["pop_change_num"])
+            smallest_pop = int(smallest_so_far["pop_change_num"])
+            if current_pop < smallest_pop:
+                smallest_so_far = current_country
+        print(f"{smallest_so_far['name']} had the greatest population loss with a change of {smallest_so_far['pop_change_num']} people")
     elif choice == "3":
-        pass
+        for current_country in countries:
+            median_age = float(current_country["median_age"])
+            if median_age < 30:
+                print(f"{current_country['name']} has a young population with a median age of {median_age} ")
     elif choice == "4":
         pass
     elif choice == "5":
